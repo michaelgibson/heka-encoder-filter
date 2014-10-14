@@ -27,11 +27,11 @@ Build Heka:
 
 Config
 ======
-[encoder_filter_zlib]
-type = "EncoderFilter"
-encoder = "zlib_encoder"
-message_matcher = "Fields[StreamAggregatorTag] == 'aggregated'"
+	[encoder_filter_zlib]
+	type = "EncoderFilter"
+	encoder = "zlib_encoder"
+	message_matcher = "Fields[StreamAggregatorTag] == 'aggregated'"
 
-[zlib_encoder]
-type = "ZlibEncoder"
-zlib_tag = "compressed"
+	[zlib_encoder]
+	type = "ZlibEncoder"
+	zlib_tag = "compressed"
