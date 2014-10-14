@@ -3,6 +3,10 @@ heka-encoder-filter
 
 A filter for [Mozilla Heka](http://hekad.readthedocs.org/) that does nothing but encode the payload.
 
+A use case for this would be anytime multiple encodings are required for the payload
+
+This Filter should probably not exist but since there is currently no other mechanism within heka that allow for multiple encodings i.e. MultiEncoder, Mutate? this will have to do.
+
 EncoderFilter
 ===========
 
