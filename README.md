@@ -1,7 +1,7 @@
 heka-encoder-filter
 ===================
 
-A filter for [Mozilla Heka](http://hekad.readthedocs.org/) that does nothing but encode the payload.
+A filter plugin for [Mozilla Heka](http://hekad.readthedocs.org/) that does nothing but encode the payload.
 
 A use case for this would be anytime multiple encodings are required for the payload
 
