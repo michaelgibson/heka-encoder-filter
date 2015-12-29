@@ -4,7 +4,7 @@ package encoder_filter
 import (
         "fmt"
         "github.com/mozilla-services/heka/message"
-        "code.google.com/p/go-uuid/uuid"
+        "github.com/pborman/uuid"
         . "github.com/mozilla-services/heka/pipeline"
 )
 
@@ -55,7 +55,7 @@ func (f *EncoderFilter) Run(fr FilterRunner, h PluginHelper) (err error) {
         tag = f.EncoderTag
 
         for pack = range fr.InChan() {
-            pack2 := h.PipelinePack(pack.MsgLoopCount)
+            pack2, _ := h.PipelinePack(pack.MsgLoopCount)
             if pack2 == nil {
                 fr.LogError(fmt.Errorf("exceeded MaxMsgLoops = %d",
                         h.PipelineConfig().Globals.MaxMsgLoops))
@@ -73,7 +73,8 @@ func (f *EncoderFilter) Run(fr FilterRunner, h PluginHelper) (err error) {
                     fr.Inject(pack2)
                 }
             }
-            pack.Recycle()
+            fr.UpdateCursor(pack.QueueCursor)
+            pack.Recycle(nil)
         }
 
     return
